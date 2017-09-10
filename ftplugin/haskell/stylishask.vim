@@ -32,19 +32,13 @@ function! stylishask#Stylishask()
         echo "Stylish-haskell: Parsing error\n"
         echohl None
     else
-        " let l:indent_opt = ""
-        " if exists("g:stylishask_indent_size")
-        "   let l:indent_opt = " --indent-size " . g:stylishask_indent_size
-        " endif
-
-        " let l:line_length_opt = ""
-        " if exists("g:stylishask_line_length")
-        "   let l:line_length_opt = " --line-length " . g:stylishask_line_length
-        " endif
+        let l:config_file_opt = ""
+        if exists("g:stylishask_config_file")
+          let l:config_file_opt = " --config " . g:stylishask_config_file
+        endif
 
         silent! exe "undojoin"
-        " silent! exe "keepjumps %!stylish-haskell" . l:indent_opt . l:line_length_opt
-        silent! exe "keepjumps %!stylish-haskell" . l:indent_opt . l:line_length_opt
+        silent! exe "keepjumps %!stylish-haskell" . l:config_file_opt
     endif
 
     call winrestview(l:winview)
