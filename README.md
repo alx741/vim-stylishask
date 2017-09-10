@@ -1,8 +1,5 @@
 # vim-stylishask
 
-This plugin is a *stylish-haskell* port of
-[vim-hindent](https://github.com/alx741/vim-hindent).
-
 Integrates with [stylish-haskell](https://github.com/jaspervdj/stylish-haskell)
 so every time you save a Haskell source file it gets automatically prettified.
 
@@ -10,6 +7,8 @@ Simply using `:%!stylish-haskell` replaces your whole source file with an error
 message from **stylish-haskell** when you happen to have a syntax error in your
 code, this plugin manages that annoyance.
 
+*Note:* If you prefer *hindent* use
+[vim-hindent](https://github.com/alx741/vim-hindent) instead.
 
 ## Installation
 
