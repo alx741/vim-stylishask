@@ -51,13 +51,13 @@ function! stylishask#StylishaskOnSave()
 endfunction
 
 
-augroup hindent
+augroup stylishask
     autocmd!
     autocmd BufWritePre *.hs call stylishask#StylishaskOnSave()
 augroup END
 
 
-command! Hindent exe "call stylishask#Stylishask()"
-command! HindentEnable exe "call stylishask#StylishaskEnable()"
-command! HindentDisable exe "call stylishask#StylishaskDisable()"
-command! HindentToggle exe "call stylishask#StylishaskToggle()"
+command! Stylishask exe "call stylishask#Stylishask()"
+command! StylishaskEnable exe "call stylishask#StylishaskEnable()"
+command! StylishaskDisable exe "call stylishask#StylishaskDisable()"
+command! StylishaskToggle exe "call stylishask#StylishaskToggle()"
