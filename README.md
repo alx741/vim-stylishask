@@ -21,6 +21,9 @@ By default, *vim-stylishask* will format your code automatically when saving a
 Haskell source file, but you can use the `:Stylishask` command at any time to
 format the current file.
 
+To apply *stylish-haskell* on a range, either write the range manually or
+visually select the desired code and then invoke `:Stylishask`.
+
 Use `:StylishaskEnable`, `:StylishaskDisable`, `:StylishaskToggle` to enable,
 disable, or toggle running `stylish-haskell` on save.
 
