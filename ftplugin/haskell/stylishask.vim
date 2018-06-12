@@ -14,7 +14,7 @@ function! stylishask#StylishaskToggle()
 endfunction
 
 
-function! stylishask#Stylishask()
+function! stylishask#Stylishask() range
     let l:winview = winsaveview()
 
     if !executable("stylish-haskell")
@@ -38,7 +38,8 @@ function! stylishask#Stylishask()
         endif
 
         silent! exe "undojoin"
-        silent! exe "keepjumps %!stylish-haskell" . l:config_file_opt
+
+        silent! exe "keepjumps " . a:firstline . "," . a:lastline . "!stylish-haskell" . l:config_file_opt
     endif
 
     call winrestview(l:winview)
@@ -57,7 +58,7 @@ augroup stylishask
 augroup END
 
 
-command! Stylishask exe "call stylishask#Stylishask()"
+command! -range=% Stylishask exe "<line1>, <line2>call stylishask#Stylishask()"
 command! StylishaskEnable exe "call stylishask#StylishaskEnable()"
 command! StylishaskDisable exe "call stylishask#StylishaskDisable()"
 command! StylishaskToggle exe "call stylishask#StylishaskToggle()"
