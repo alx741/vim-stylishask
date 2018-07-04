@@ -15,8 +15,6 @@ endfunction
 
 
 function! stylishask#Stylishask() range
-    let l:winview = winsaveview()
-
     if !executable("stylish-haskell")
         echomsg "Stylish-haskell not found in $PATH, did you installed it?
                     \ (stack install stylish-haskell)"
@@ -42,7 +40,7 @@ function! stylishask#Stylishask() range
         silent! exe "keepjumps " . a:firstline . "," . a:lastline . "!stylish-haskell" . l:config_file_opt
     endif
 
-    call winrestview(l:winview)
+    call winrestview(b:winview)
 endfunction
 
 function! stylishask#StylishaskOnSave()
@@ -58,7 +56,7 @@ augroup stylishask
 augroup END
 
 
-command! -range=% Stylishask exe "<line1>, <line2>call stylishask#Stylishask()"
+command! -range=% Stylishask exe "let b:winview = winsaveview() | <line1>, <line2>call stylishask#Stylishask()"
 command! StylishaskEnable exe "call stylishask#StylishaskEnable()"
 command! StylishaskDisable exe "call stylishask#StylishaskDisable()"
 command! StylishaskToggle exe "call stylishask#StylishaskToggle()"
