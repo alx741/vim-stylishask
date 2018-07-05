@@ -45,7 +45,8 @@ endfunction
 
 function! stylishask#StylishaskOnSave()
     if g:stylishask_on_save == 1
-        call stylishask#Stylishask()
+        let b:winview = winsaveview()
+        exe "%call stylishask#Stylishask()"
     endif
 endfunction
 
