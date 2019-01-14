@@ -16,7 +16,7 @@ endfunction
 
 function! stylishask#Stylishask() range
     if !executable("stylish-haskell")
-        echomsg "Stylish-haskell not found in $PATH, did you installed it?
+        echomsg "Stylish-haskell not found in $PATH, did you install it?
                     \ (stack install stylish-haskell)"
         return
     endif
