@@ -2,6 +2,10 @@ if !exists("g:stylishask_on_save")
     let g:stylishask_on_save = 1
 endif
 
+if !exists("g:stylishask_command") && executable("stylish-haskell")
+    let g:stylishask_command = "stylish-haskell"
+endif
+
 
 function! stylishask#StylishaskEnable()
     let g:stylishask_on_save = 1
@@ -15,7 +19,7 @@ endfunction
 
 
 function! stylishask#Stylishask() range
-    if !executable("stylish-haskell")
+    if !exists("g:stylishask_command")
         echomsg "Stylish-haskell not found in $PATH, did you install it?
                     \ (stack install stylish-haskell)"
         return
@@ -23,7 +27,7 @@ function! stylishask#Stylishask() range
 
     " Write the buffer to stylish-haskell, rather than having it use the
     " file on disk, because that file might not have been created yet!
-    silent! w !stylish-haskell > /dev/null 2>&1
+    silent! exe "w !" . g:stylishask_command . " > /dev/null 2>&1"
 
     if v:shell_error
         echohl WarningMsg
@@ -37,7 +41,7 @@ function! stylishask#Stylishask() range
 
         silent! exe "undojoin"
 
-        silent! exe "keepjumps " . a:firstline . "," . a:lastline . "!stylish-haskell" . l:config_file_opt
+        silent! exe "keepjumps " . a:firstline . "," . a:lastline . "!" . g:stylishask_command . l:config_file_opt
     endif
 
     call winrestview(b:winview)

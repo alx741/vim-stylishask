@@ -41,3 +41,11 @@ g:stylishask_on_save = 1
 ```vim
 g:stylishask_config_file = "/path/to/.stylish-haskell.yaml"
 ```
+
+Specify the path to the stylish-haskell executable (for example if you
+installed stylish-haskell with `stack build --copy-compiler-tool
+stylish-haskell`)
+
+```vim
+g:stylishask_config_file = "~/.stylish-haskell.yaml"
+```
