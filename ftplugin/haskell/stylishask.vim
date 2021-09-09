@@ -51,6 +51,7 @@ function! stylishask#StylishaskOnSave()
     if g:stylishask_on_save == 1
         let b:winview = winsaveview()
         exe "%call stylishask#Stylishask()"
+        call winrestview(b:winview)
     endif
 endfunction
 
